@@ -73,10 +73,10 @@ Let's load three spatial data objects to plot:
 world_elevation <- read_stars(here::here("week1", "data", "worldelevation.tif"))
 
 # country boundaries
-world_vector <- 
+world_vector <- read_sf(here::here("week1", "data", "worldvector.gpkg"))
 
 # major cities
-world_cities <- 
+world_cities <- read_sf(here::here("week1", "data", "worldcities.gpkg"))
 
 ```
 
