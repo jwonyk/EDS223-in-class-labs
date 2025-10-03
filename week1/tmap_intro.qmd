@@ -477,6 +477,21 @@ tm_shape(world_vector) +
             bg.color = "grey95")
 ```
 
+```{r}
+tm_shape(world_vector) +
+  tm_polygons(fill = "gdp_per_cap",
+              fill.scale = tm_scale(breaks = c(0, 5000, 20000, 50000, Inf),
+                                    labels = c("low", "medium", "high", "very high")),
+              fill.legend = tm_legend(title = "Regional Income")) +
+  tm_title(text = "Global Income", 
+           frame = TRUE) +
+  tm_layout(text.fontfamily = "Times New Roman",
+            style = "cobalt",
+            bg.color = "black",
+            frame.double_line = TRUE) +
+  tm_crs("+proj=eqearth")
+```
+
 ## 7. Interactive options
 
 One of the most powerful aspects of `tmap` is the ease of creating interactive maps. `tmap` has two modes `"plot"` which creates static maps and `"view"` which creates interactive maps that can be easily embedded in quarto docs. It's as easy as using the `tmap_mode()`!
@@ -488,7 +503,7 @@ One of the most powerful aspects of `tmap` is the ease of creating interactive m
 To return to regular plotting mode, simply reset `tmap_mode`.
 
 ```{r}
-
+tmap_mode("plot")
 ```
 
 ## 8. Saving maps
@@ -496,6 +511,9 @@ To return to regular plotting mode, simply reset `tmap_mode`.
 Maps can be stored as objects for for adding additional layers and saving programmatically. Maps can be saved directly in `tmap` using the `tm_save()` function.
 
 ```{r}
+map1 <- tm_shape(world_vector) +
+  tm_polygons(fill = "gdp_per_cap",
+              fill.legend = tm_legend(title = "GDP Per Capita"))
 
-
+tmap_save(map1, here::here("week1", "~/Documents/MEDS/EDS-223/EDS223-in-class-labs/week1"))
 ```
