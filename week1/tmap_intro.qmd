@@ -497,7 +497,7 @@ tm_shape(world_vector) +
 One of the most powerful aspects of `tmap` is the ease of creating interactive maps. `tmap` has two modes `"plot"` which creates static maps and `"view"` which creates interactive maps that can be easily embedded in quarto docs. It's as easy as using the `tmap_mode()`!
 
 ```{r}
-
+tmap_mode("view")
 ```
 
 To return to regular plotting mode, simply reset `tmap_mode`.
